@@ -1,0 +1,220 @@
+:root {
+   --primary-color: #2a2130;
+   --primary-color-transparent: #4e3c5784;
+   --secondary-color: #ffffff;
+   --contrast-color: #b0d7ff;
+}
+
+html,
+body {
+   margin: 0px;
+   padding: 0px;
+   border: 0px;
+   background-color: var(--primary-color);
+   scroll-behavior: smooth;
+}
+
+.main {
+   background-color: #2a2130;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: normal;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 8px;
+   padding: 0px;
+}
+
+li {
+   padding: 0px;
+}
+
+a {
+   text-decoration: none;
+}
+
+p,
+a,
+del,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ul {
+   color: #f5f5f5;
+   margin: 0px;
+   font-weight: 400;
+}
+
+.small {
+   font-size: 8px;
+}
+
+.medium {
+   font-size: 16px;
+}
+
+.big {
+   font-size: 24px;
+}
+
+.heading {
+   font-size: 32px;
+}
+
+.title {
+   font-size: 40px;
+}
+
+.smallweight {
+   font-weight: 400;
+}
+
+.mediumweight {
+   font-weight: 600;
+}
+
+.bigweight {
+   font-weight: 800;
+}
+
+input[type="checkbox"] {
+   width: 24px;
+   height: 24px;
+}
+
+input::placeholder {
+   color: var(--contrast-color);
+   font-size: 24px;
+   font-style: italic;
+   outline: none;
+}
+
+input[type="input"] {
+   width: 400px;
+   height: 40px;
+   font-size: 24px;
+   color: var(--secondary-color);
+   border-radius: 8px;
+   background-color: var(--primary-color);
+   padding-left: 8px;
+   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+   background: linear-gradient(0deg, rgba(42, 33, 48, 1) 0%, #2a2130 100%);
+   border: none;
+   outline: none;
+}
+
+.button {
+   font-size: 16px;
+   text-align: center;
+   color: var(--contrast-color);
+   padding: 8px;
+   font-weight: 600;
+   border-radius: 24px;
+   background: var(--primary-color-transparent);
+   cursor: pointer;
+   transition: all 0.3s ease;
+   position: relative;
+   display: inline-block;
+   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+   min-width: 40px;
+   min-height: 40px;
+   border: none;
+}
+
+.button:hover {
+   background: var(--primary-color);
+}
+
+.link-button {
+   font-size: 24px;
+   text-align: center;
+   color: var(--contrast-color);
+   padding: 8px;
+   font-weight: 600;
+   border-radius: 24px;
+   background: var(--primary-color-transparent);
+   cursor: pointer;
+   transition: all 0.3s ease;
+   position: relative;
+   display: inline-block;
+   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+   min-width: 40px;
+   border: none;
+}
+
+.hide-link-button {
+   display: none;
+   visibility: hidden;
+}
+
+.link-button:hover {
+   background: var(--primary-color);
+}
+
+.navbar {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: start;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 8px;
+   background-color: #2a2130;
+   padding: 16px 8px 16px 8px;
+}
+
+.navbar-top-left {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: start;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 8px;
+   height: 100%;
+   align-self: center;
+}
+
+.logo {
+   flex: auto;
+   align-self: center;
+   max-width: 32px;
+   max-height: 32px;
+}
+
+.logo-text {
+   flex: auto;
+   align-self: center;
+}
+
+.navbar-top-right {
+   /* 1st value grow,2nd how fast it shrinks, 3rd pixel ovveride */
+   flex: auto;
+   align-self: center;
+   /* Ovveride pos */
+
+   /* Display flex */
+   display: flex;
+   /* Flex Direction */
+   flex-direction: row;
+   /* Axe direction */
+   justify-content: flex-end;
+   /* Main axes */
+   align-items: end;
+   /* Cross axes */
+   flex-wrap: nowrap;
+   /* Warpping */
+   align-content: normal;
+   /* Works with Wraping */
+   gap: 8px;
+   /* Gap */
+   height: 100%;
+}
