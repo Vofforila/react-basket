@@ -16,6 +16,41 @@
    text-align: center;
 }
 
+.auth-item-splitter {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: baseline;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 8px;
+   width: 100%;
+}
+
+.auth-item-header {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: start;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 16px;
+}
+
+.auth-item-error {
+   flex: auto;
+   align-self: flex-end;
+
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+   align-items: end;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 16px;
+   margin-right: 3%;
+}
+
 .auth-panel {
    display: flex;
    flex-direction: column;

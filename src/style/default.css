@@ -3,6 +3,7 @@
    --primary-color-transparent: #4e3c5784;
    --secondary-color: #ffffff;
    --contrast-color: #b0d7ff;
+   --error-color: #ff3333;
 }
 
 html,
@@ -80,6 +81,11 @@ ul {
 
 .bigweight {
    font-weight: 800;
+}
+
+.error {
+   color: var(--error-color);
+   font-style: italic;
 }
 
 input[type="checkbox"] {
@@ -163,7 +169,7 @@ input[type="input"] {
    display: flex;
    flex-direction: row;
    justify-content: flex-start;
-   align-items: start;
+   align-items: baseline;
    flex-wrap: nowrap;
    align-content: normal;
    gap: 8px;
@@ -196,25 +202,15 @@ input[type="input"] {
 }
 
 .navbar-top-right {
-   /* 1st value grow,2nd how fast it shrinks, 3rd pixel ovveride */
    flex: auto;
    align-self: center;
-   /* Ovveride pos */
 
-   /* Display flex */
    display: flex;
-   /* Flex Direction */
    flex-direction: row;
-   /* Axe direction */
    justify-content: flex-end;
-   /* Main axes */
    align-items: end;
-   /* Cross axes */
    flex-wrap: nowrap;
-   /* Warpping */
    align-content: normal;
-   /* Works with Wraping */
    gap: 8px;
-   /* Gap */
    height: 100%;
 }
