@@ -10,6 +10,30 @@ This is a Blog + Database driven basket with Admin Interface for adding Products
 - **Realtime Update** - Updates Realtime by using Firebase API's
 - **You can reduce the price to a item** - Reduce a price to a item by using Admin Interface
 
+To run:
+
+Install Dependecies:
+Npm/Node.js
+
+In terminal run:
+```
+npm create vite@4.1.0
+```
+
+Select React + Typescript
+
+After that run:
+```
+npm install
+npm install firebase
+npm install react-router-dom
+```
+
+To run the server run:
+```
+npm run dev
+```
+
 ### Tehnologies
 
 | Tehnologies | Environments | Version |
