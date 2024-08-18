@@ -16,5 +16,5 @@ This is a Blog + Database driven basket with Admin Interface for adding Products
 |-----|--------------|---------|
 | [Firebase](https://firebase.google.com/)  | Cloud | V1 |
 | Web tehnologies | Web |  |
-| React | Web | 18.2.0 |
-| TypeScript | Web | 5.5 |
+| [React](https://react.dev/) | Web | 18.2.0 |
+| [TypeScript](https://www.typescriptlang.org/) | Web | 5.5 |
