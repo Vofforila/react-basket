@@ -1,0 +1,30 @@
+.dev-page {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: normal;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 8px;
+   margin: 16px 8px 16px 8px;
+}
+
+.product-title {
+   align-self: flex-start;
+}
+
+.dev-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: normal;
+   flex-wrap: nowrap;
+   align-content: normal;
+   gap: 8px;
+   margin: 16px 8px 16px 8px;
+}
+
+.product-button {
+   flex: 1;
+   align-self: center;
+}

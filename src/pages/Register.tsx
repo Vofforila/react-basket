@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { db } from "../firebase/firebase";
-import { collection, addDoc, doc, getDocs } from "firebase/firestore";
+import { auth, db } from "../firebase/firebase";
+import { collection, addDoc, doc, getDocs, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
+   const navigate = useNavigate();
+
+   const [username, setUsername] = useState("");
+   const [email, setEmail] = useState("");
    const [password, setPassowrd] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -35,7 +41,7 @@ export default function Register() {
          return "Password must contain at least one special character.";
       }
 
-      return "Password is strong.";
+      return "";
    }
 
    async function CheckCredentials(e: React.ChangeEvent<HTMLInputElement>) {
@@ -51,10 +57,23 @@ export default function Register() {
       if (e.target.name === "password") {
          setPassowrdError(isStrongPassword(e.target.value));
          setPassowrd(e.target.value);
-      } else if (e.target.name === "confirmPassowrd") {
+         if (e.target.value != confirmPassword && confirmPassword != "") {
+            setConfirmPasswordError("passwords don't mach");
+            return;
+         } else if (e.target.value == confirmPassword) {
+            setConfirmPasswordError("");
+            return;
+         }
+         return;
+      }
+      if (e.target.name === "confirmPassword") {
          setConfirmPassword(e.target.value);
-         if (password != confirmPassword) {
-            setPassowrd("passwords don't mach")!;
+         if (password != e.target.value) {
+            setConfirmPasswordError("passwords don't mach");
+            return;
+         } else if (password == e.target.value) {
+            setConfirmPasswordError("");
+            return;
          }
       }
 
@@ -63,7 +82,6 @@ export default function Register() {
       querySnapshot.forEach((doc: any) => {
          const data = doc.data();
 
-         console.log(e.target.name);
          if (e.target.value === data[e.target.name]) {
             check = true;
             if (e.target.name == "username") {
@@ -76,13 +94,56 @@ export default function Register() {
             }
          }
 
-         if (check === true && e.target.name == "username") {
+         console.log(username);
+         if (check === false && e.target.name == "username") {
+            setUsername(e.target.value);
             setUsernameError("");
-         } else if (check === true && e.target.name == "email") {
+         } else if (check === false && e.target.name == "email") {
+            setEmail(e.target.value);
             setEmailError("");
          }
       });
    }
+
+   function RegisterUser() {
+      if (username == "") {
+         setUsernameError("Username not entered");
+      } else if (email == "") {
+         setEmailError("Email not entered");
+      } else if (password == "") {
+         setPassowrdError("Password not entered");
+      } else if (confirmPassword == "") {
+         setConfirmPasswordError("Confirm Password not entered");
+      }
+      if (
+         usernameError === "" &&
+         emailError === "" &&
+         passowrdError === "" &&
+         confirmPasswordError === ""
+      ) {
+         createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+               console.log("Created account");
+               const user = userCredential.user;
+               CreateUserDatabase();
+               alert("Login succesfully");
+               navigate("/login");
+            })
+            .catch((error) => {
+               const errorCode = error.code;
+               const errorMessage = error.message;
+            });
+         return;
+      }
+   }
+
+   async function CreateUserDatabase() {
+      await addDoc(collection(db, "users"), {
+         username: username,
+         email: email,
+      });
+   }
+
    return (
       <div className="auth-container">
          <div className="auth-header title">
@@ -103,7 +164,7 @@ export default function Register() {
                      className="register-username"
                      type="input"
                      placeholder="Enter username..."
-                     title="register-username"
+                     title="Username Input"
                      name="username"
                      onChange={CheckCredentials}
                      required
@@ -123,7 +184,7 @@ export default function Register() {
                   <input
                      className="email-input"
                      type="input"
-                     title="email-input"
+                     title="Email Input"
                      name="email"
                      placeholder="Enter email..."
                      onChange={CheckCredentials}
@@ -143,7 +204,7 @@ export default function Register() {
                   <input
                      className="register-password"
                      type="input"
-                     title="register-password"
+                     title="Password"
                      placeholder="Enter password..."
                      name="password"
                      onChange={CheckCredentials}
@@ -163,16 +224,20 @@ export default function Register() {
                   <input
                      className="register-confirm-password"
                      type="input"
-                     title="register-confirm-password"
+                     title="Confirm Password"
                      placeholder="Confirm password..."
-                     name="confirmPassowrd"
+                     name="confirmPassword"
                      onChange={CheckCredentials}
                   />
                </div>
             </div>
             <div>
-               <button type="button" className="login-button button">
-                  Login
+               <button
+                  type="button"
+                  className="login-button button"
+                  onClick={RegisterUser}
+               >
+                  Register
                </button>
             </div>
          </div>
