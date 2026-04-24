@@ -35,7 +35,7 @@ To run the server run:
 npm run dev
 ```
 
-### Tehnologies
+### Technologies
 
 | Tehnologies | Environments | Version |
 |-----|--------------|---------|
